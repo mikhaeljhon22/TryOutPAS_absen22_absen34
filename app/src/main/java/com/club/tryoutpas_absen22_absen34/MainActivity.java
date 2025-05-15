@@ -1,12 +1,7 @@
 package com.club.tryoutpas_absen22_absen34;
 
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -23,28 +18,31 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_layout, new HomeFragment())
+                .replace(R.id.frame_layout, new LaLigaFragment())
                 .commit();
+
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             Fragment fragment = null;
             int itemId = item.getItemId();
 
-            if (itemId == R.id.nav_home) {
-                fragment = new HomeFragment();
-            } else if (itemId == R.id.nav_dashboard) {
-                fragment = new DashboardFragment();
-            } else if (itemId == R.id.nav_notifications) {
-                fragment = new NotificationsFragment();
+            if (itemId == R.id.nav_laliga) {
+                fragment = new LaLigaFragment();
+            } else if (itemId == R.id.nav_premierleague) {
+                fragment = new PremierLeagueFragment();
+            } else if (itemId == R.id.nav_profile) {
+                fragment = new ProfileFragment();
             }
 
             if (fragment != null) {
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.frame_layout, fragment)
                         .commit();
+
                 return true;
             }
             return false;
         });
     }
+
 }
